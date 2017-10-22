@@ -107,11 +107,36 @@ A function is a series of statements that are grouped together into a special pa
         ```
 
 ## 6. Invoking instances through the constructor: 
-Functions can construct objects using the new keyword.
-new creates a new instance of the object.
-Each new instance has it’s own set of properties.
-this argument points to the instance of the object
-Constructor names are capitalized.
+- Functions can construct objects using the *new* keyword.
+- *new* creates a new instance of the object.
+- Each new instance has it’s own set of properties.
+- *this* argument points to the instance of the object
+- Constructor names are capitalized.
+     ```javascript
+    // 6. Invoking instance through the constructor    
+    const Student = function () {
+        let name;
+        let age;
+        
+        /* If we call within an object will refer that object 
+        otherwise will refer to global object */
+        return console.dir(this);
+    };
+    
+    // 1st instance of Student object is firstStudent
+    const firstStudent = new Student; // `this` refers to Student object.
+    firstStudent.name = "Jack";
+    firstStudent.age = 15;
+    
+    // 2nd instance of Student object is secondStudent
+    const secondStudent = new Student; // `this` refers to Student object.
+    secondStudent.name = "Tom";
+    secondStudent.age = 19;        
+    
+    console.log(Student());
+    console.log(firstStudent.name);
+    console.log(secondStudent.name);
+     ```
 
 
 ## 7. Expanding objects through prototype: If we want to expand the functionality of a constructor by adding a method, We can do that through that constructors prototype object. 
