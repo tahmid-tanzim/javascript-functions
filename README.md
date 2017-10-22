@@ -224,15 +224,25 @@ If we want to expand the functionality of a constructor by adding a method, We c
     ```
     
 ## 10. Returning values:
-Returns an expression
-Sort of optional ->By default undefined return
-Only in function body
-Return sends something back to the caller
-Stops execution of the function
-We can have more than one return statement
-Can return anything like other function or object or nothing
-Return statements is auto semicolon insertion
-
+- Returns an expression
+- Sort of optional ->By default undefined return
+- Only in function body
+- Return sends something back to the caller
+- Stops execution of the function
+- We can have more than one return statement
+- Can return anything like other function or object or nothing
+- Return statements is auto semicolon insertion
+    ```javascript
+    // 10. Return Statements
+    function foo(bar) {
+        console.log(bar + 1);
+        return;
+        console.log(bar + 5);
+    }
+    
+    foo(5);
+    ```
+    
 ## 11. Using anonymous closures:
 All functions are considered objects in Javascript
 
