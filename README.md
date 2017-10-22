@@ -136,38 +136,93 @@ A function is a series of statements that are grouped together into a special pa
     console.log(Student());
     console.log(firstStudent.name);
     console.log(secondStudent.name);
-     ```
+    ```
 
+## 7. Expanding objects through prototype: 
+If we want to expand the functionality of a constructor by adding a method, We can do that through that constructor's prototype object. 
+- JavaScript is known as Prototypal Inheritance language
+- Every object can be based on another.
+- *prototype* object gives you access.
+- Multiple objects can inherit a same functionality
+- All objects inherit properties
+- Declarations inherit from *Function*
+- *Function* constructor inherits from *Object*
+     ```javascript
+    // 7. Expanding functionality through prototype
+    const dept = function (val) {
+        console.log(this.name + ' is under ' + val);
+    };
+            
+    const Student = function () {
+        let id, name, cgpa;
+    };
+    
+    const Teacher = function () {
+        let id, name;
+    };
+    
+    Student.prototype.department = dept;
+    Teacher.prototype.department = dept;
+        
+    const firstStudent = new Student;
+    firstStudent.id = 15;
+    firstStudent.name = "Rover";
+    firstStudent.cgpa = 3.12;
+    firstStudent.department("CSE");
 
-## 7. Expanding objects through prototype: If we want to expand the functionality of a constructor by adding a method, We can do that through that constructors prototype object. 
-
-JavaScript is known as Prototypal Inheritance language
-Every object can be based on another.
-prototype object gives you access.
-Multiple objects can inherit a same functionality
-All objects inherit properties
-Declarations inherit from Function
-Function constructor inherits from Object
-
-
-
-console.dir(firstStudent)
-console.dir(dept)
+    const firstTeacher = new Teacher;
+    firstTeacher.id = 456;
+    firstTeacher.name = "Jim";
+    firstTeacher.department("EEE");
+    
+    console.dir(dept);
+    console.dir(firstStudent);
+    console.dir(firstTeacher);
+    ```
 
 ## 8. Understanding Call & Apply invocation:
-Indirect invocation
-Define the value of this argument
-Control: this & arguments
-Call passes a value, Apply passes an array
-
+- Indirect invocation
+- Define the value of *this* argument
+- Control: *this* & *arguments*
+- ***Call*** passes a value, ***Apply*** passes an array
+    ```javascript
+    // 8. Invoking through Call & Apply
+    function print(name, profession) {
+        console.log(`My name is ${name} and I'm a ${profession}.`);
+        console.log(this);
+    }
+    
+    const obj = {
+        date: "12/12/2012",
+        place: "Dhaka"
+    };
+    
+    print("John", "Fireman");
+    print.apply(undefined, ["Susan", "Teacher"]);
+    print.call(obj, "Mike", "Manager");
+    ```
+    
 ## 9. Using the arguments parameter:
-List of elements passed
-An Array like object
-Numerical index arguments[x]
-We can get the arguments.length
-We can loop through arguments
-Can’t use all array methods
-
+- List of elements passed
+- An Array like object
+- Numerical index ***arguments[x]***
+- We can get the ***arguments.length***
+- We can loop through arguments
+- Can’t use all array methods
+    ```javascript
+    // 9. Using arguments parameters
+    function addingArguments() {
+        console.dir(arguments);
+        let sum = 0;
+        for(let i = arguments.length - 1; i >= 0; i--) {
+            sum += arguments[i];
+        }
+        return sum;
+    }
+    
+    console.log(addingArguments(2, 3, 4, 5));
+    ```
+    
 ## 10. Returning values:
 Returns an expression
 Sort of optional ->By default undefined return
