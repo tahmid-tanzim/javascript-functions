@@ -42,27 +42,69 @@ A function is a series of statements that are grouped together into a special pa
          ```
 
 ## 4. Invoking functions traditionally:
-Function Invocation Patterns (First two are most common): 
-Functions
-Methods
-Constructors
-Call & Apply methods
-Receive arguments & this
-Traditional Invocation ~> this parameter bound to global object
+- #### Function Invocation Patterns (First two are most common): 
+    - Functions
+    - Methods
+    - Constructors
+    - Call & Apply methods
+- #### Receive *arguments* & *this*
+- #### Traditional Invocation ~> *this* parameter bound to global object
+     ```javascript
+     // 3. Traditional function invocation with arguments & this
+     function plus_03(a, b) {
+         return (
+             console.log(a + b),
+             console.log(this),
+             console.log(arguments)
+         );
+     }
+        
+     plus_03(5, 8);
+     ```
 
 ## 5. Using functions as objects:
-Methods: a method is nothing more then a function that has been assigned as a property of an object.
-What’s an object: an object is nothing more then one of JavaScript’s many data types.
-Variables var a = 2; (number | string | boolean)
-Lists / Arrays var myList = (‘Hello World’, false, 5);
-Objects are flexible ~> can hold any data types / other objects / functions
+- #### Methods: a method is nothing more then a function that has been assigned as a property of an object.
+    - What’s an object: an object is nothing more then one of JavaScript's many data types.
+    - Variables var a = 2; (number | string | boolean)
+    - Lists / Arrays var myList = ('Hello World', false, 5);
+    - Objects are flexible ~> can hold any data types / other objects / functions
+        ```javascript
+        /*
+        4. What an object looks like
+             - Start with curly braces
+             - Flexible properties        
+        */
+        const info = {
+            id: 1234,
+            name: "Tahmid Tanzim",
+            active: true,
+            links: { 
+                blog: "http://blog.something.com",
+                email: "tahmid.tanzim@gmail.com"
+            }
+        };
+        ```
 
-
-Invoking Functions as methods: 
-The this argument points to the object
-Invoke the function using dot notation
-the binding of this happens at the invocation time
-
+- #### Invoking Functions as methods: 
+    - The *this* argument points to the object
+    - Invoke the function using dot notation
+    - the binding of *this* happens at the invocation time
+        ```javascript
+        // 5. Invoking functions as methods    
+        const calc = {
+            status: "In Progress",
+            plus: function (a, b) {
+                return (
+                    console.log(this);
+                    console.log(a + b);
+                    console.log(arguments);
+                    console.log(this.status);
+                );
+            }
+        };
+        
+        calc.plus(2, 5);
+        ```
 
 ## 6. Invoking instances through the constructor: 
 Functions can construct objects using the new keyword.
