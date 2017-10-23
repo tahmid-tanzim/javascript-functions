@@ -245,10 +245,75 @@ If we want to expand the functionality of a constructor by adding a method, We c
     
 ## 11. Using anonymous closures:
 All functions are considered objects in Javascript
+```javascript
+// 11.1 Using anonymous closures
+function foo() {
+    console.log("bar");
+}
+foo();
 
+// 11.2 By Defination Expressions
+const func_1 = function foo_1 () {
+    console.log("bar_1")
+};
+// function name `foo_1` doesn't exists in the global scope
+// foo_1();
+func_1();
+
+// 11.3 func_2 self-execution
+const func_2 = function foo_2 () {
+    // function name `foo_2` is unnecessary until recursion
+    console.log("bar_2")
+}();
+
+// 11.4 We can assign an anonymous function to a variable func_3
+const func_3 = function () {
+    console.log("bar_3")
+}();
+
+/* 
+    11.5 Self executing function / anonymous closures
+    if we don't need to call this function 
+    then we can wrap this function with parentheses
+    to convert the function as value to execute the function
+*/
+(function () {
+    console.log("bar_4");
+})();
+```
+    
 ## 12. Understanding variable scope and hoisting:
 
 ## 13. Creating and namespacing modules:
-Modules let you reuse code across apps
-Namespacing protects variables
-Return statement communicates back
+- ***Modules*** let you reuse code across apps
+- ***Namespacing*** protects variables
+- ***Return*** statement communicates back
+```javascript
+/*
+    13. Creating and namespacing modules
+    passing arguments and setting modules defaults
+    Chaining module method calls
+*/
+
+const foo = (function () {
+    let DEFAULTS = {
+        say: "hello",
+        speed: "normal"
+    };
+    
+    return {
+        speak() {
+            let [myArgs] = arguments;
+            let myStatement = myArgs.say || DEFAULTS.say;
+            console.log(myStatement);
+            return this;
+        },
+        run() {
+            let [myArgs] = arguments;
+            let running = myArgs.speed || DEFAULTS.speed;
+            console.log('running ... ' + running);
+            return this;
+        }        
+    };
+})();
+```
